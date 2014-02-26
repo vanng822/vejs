@@ -1,0 +1,27 @@
+{
+	"name": "vejs",
+	"description": "Template engine for javascript/nodejs",
+	"keywords": ["template engine", "nodejs", "client"],
+	"author": "Nguyen Van Nhu",
+	"homepage": "https://github.com/vanng822/vejs",
+	"contributors": [],
+	"dependencies": [],
+	"devDependencies": {"vows": "*", "uglify-js": "*", "commander": "*"},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/vanng822/vejs.git"
+	},
+	"version": "0.0.0",
+	"scripts": {
+		"test": "vows --spec tests/*"
+	},
+	"bugs": {
+		"url": "https://github.com/vanng822/vejs/issues"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/vanng822/vejs/blob/master/LICENSE"
+		}
+	]
+}
