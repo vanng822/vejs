@@ -6,12 +6,12 @@
 	"homepage": "https://github.com/vanng822/vejs",
 	"contributors": [],
 	"dependencies": [],
-	"devDependencies": {"vows": "*", "uglify-js": "*", "commander": "*"},
+	"devDependencies": {"vows": "*"},
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/vanng822/vejs.git"
 	},
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"scripts": {
 		"test": "vows --spec tests/*"
 	},
