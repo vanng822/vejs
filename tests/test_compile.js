@@ -3,6 +3,10 @@ var vejs = require('../index.js');
 
 var vows = require('vows');
 
+vejs.funcs.testing_function1 = function(arg) {
+	return arg;
+}
+
 // some simple control
 vows.describe('Test suite for TemplateEngine').addBatch({
 	compileForLoop: function() {
@@ -24,5 +28,8 @@ vows.describe('Test suite for TemplateEngine').addBatch({
 	escapeMarkup: function() {
 		assert.equal('&lt;script&gt;alert(&#39;0&#39;);&lt;/script&gt;', vejs.compile('<%=script%>')({script:"<script>alert('0');</script>"}));
 		assert.equal('&lt;a href=&quot;/?t=1&amp;p=2&amp;s=3&quot; onclick=&quot;javascript::alert(0)&quot;&gt;test&lt;/a&gt;', vejs.compile('<%=tag%>')({tag:'<a href="/?t=1&p=2&s=3" onclick="javascript::alert(0)">test</a>'}));
+	},
+	compileFunction: function() {
+		assert.equal(vejs.compile('<%= &testing_function1(first)%>')({first:2}), '2');
 	}
 }).export(module);
