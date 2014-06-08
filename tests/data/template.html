@@ -1,0 +1,8 @@
+<%- &testing_function1(first)%>
+<div>Testing</div>
+<% if(first == 2) {%>
+	first = 2
+<% } %>
+<script>
+var test = <%-: {first: first} | json %>;
+</script>
