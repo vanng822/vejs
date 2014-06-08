@@ -28,6 +28,14 @@ vows.describe('Test suite for parsing template').addBatch({
         expected += "\n}\n";
         expected += "return buf.join('');";
 		assert.equal(vejs.parse('<%- &func1()%>'), expected);
+	},
+	parseMethodOutpuWithoutEscape : function() {
+		expected = "var buf = [];";
+        expected += "\nwith (locals) {";
+        expected += "\n  buf.push('', (__stack.lineno=1,  funcs.obj.func1()), '');";
+        expected += "\n}\n";
+        expected += "return buf.join('');";
+		assert.equal(vejs.parse('<%- &obj.func1()%>'), expected);
 	}
 
 }).export(module);
