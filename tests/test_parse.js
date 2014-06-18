@@ -5,7 +5,7 @@ var vows = require('vows');
 
 vows.describe('Test suite for parsing template').addBatch({
 	parseFunctionWithoutOutput : function() {
-		expected = "var buf = [];";
+		var expected = "var buf = [];";
         expected += "\nwith (locals) {";
         expected += "\n  buf.push('');__stack.lineno=1; if (first) { funcs.func1()}; buf.push('');";
         expected += "\n}\n";
@@ -14,7 +14,7 @@ vows.describe('Test suite for parsing template').addBatch({
 		assert.equal(vejs.parse('<% if (first) { &func1()}%>'), expected);
 	},
 	parseFunctionOutputWithEscape : function() {
-		expected = "var buf = [];";
+		var expected = "var buf = [];";
         expected += "\nwith (locals) {";
         expected += "\n  buf.push('', escape((__stack.lineno=1,  funcs.func1())), '');";
         expected += "\n}\n";
@@ -22,7 +22,7 @@ vows.describe('Test suite for parsing template').addBatch({
 		assert.equal(vejs.parse('<%= &func1()%>'), expected);
 	},
 	parseFunctionOutpuWithoutEscape : function() {
-		expected = "var buf = [];";
+		var expected = "var buf = [];";
         expected += "\nwith (locals) {";
         expected += "\n  buf.push('', (__stack.lineno=1,  funcs.func1()), '');";
         expected += "\n}\n";
@@ -30,7 +30,7 @@ vows.describe('Test suite for parsing template').addBatch({
 		assert.equal(vejs.parse('<%- &func1()%>'), expected);
 	},
 	parseMethodOutpuWithoutEscape : function() {
-		expected = "var buf = [];";
+		var expected = "var buf = [];";
         expected += "\nwith (locals) {";
         expected += "\n  buf.push('', (__stack.lineno=1,  funcs.obj.func1()), '');";
         expected += "\n}\n";
@@ -38,7 +38,7 @@ vows.describe('Test suite for parsing template').addBatch({
 		assert.equal(vejs.parse('<%- &obj.func1()%>'), expected);
 	},
 	parseOptionOpenClose : function() {
-		expected = "var buf = [];";
+		var expected = "var buf = [];";
         expected += "\nwith (locals) {";
         expected += "\n  buf.push('', (__stack.lineno=1,  funcs.obj.func1() ), '');";
         expected += "\n}\n";
@@ -46,7 +46,7 @@ vows.describe('Test suite for parsing template').addBatch({
 		assert.equal(vejs.parse('{{- &obj.func1() }}', {open: '{{', close: '}}'}), expected);	
 	},
 	parseModuleOpenClose : function() {
-		expected = "var buf = [];";
+		var expected = "var buf = [];";
         expected += "\nwith (locals) {";
         expected += "\n  buf.push('', (__stack.lineno=1,  funcs.obj.func1() ), '');";
         expected += "\n}\n";
